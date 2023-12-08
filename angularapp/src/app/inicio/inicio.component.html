@@ -1,0 +1,25 @@
+
+<div>
+  <h1>{{ hospitalInfo.nombre }}</h1>
+  <img src="assets/imagenes/logo_hosp.jpeg">
+  <p>{{ hospitalInfo.mision }}</p>
+
+  <!-- <p>{{ descripcion }}</p>-->
+
+  <div class="servicios">
+    <h2>Nuestros Servicios</h2> 
+    <ul>
+      <li>Cambio de suelas</li>
+      <li>Restauración de pieles</li>
+      <li>Igualación de tonos</li>
+      <li>Cambio de tapas y tacones</li>
+    </ul>
+  </div>
+
+  <div *ngIf="mostrarMensaje" class="mensaje-importante">
+    <p>¡¡¡IMPORTANTE!!! Somos un servicio de limpieza y restauración. No tenemos fabricación de calzado.</p>
+    <button (click)="cerrarMensaje()">Cerrar</button>
+  </div>
+
+
+</div>

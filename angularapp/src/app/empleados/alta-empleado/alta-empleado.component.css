@@ -1,0 +1,35 @@
+/* alta-empleado.component.css */
+
+div {
+  margin: 20px;
+}
+
+form {
+  max-width: 400px;
+  margin: auto;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+  button:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+  }
