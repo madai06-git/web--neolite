@@ -8,5 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './reparaciones.component.css'
 })
 export class ReparacionesComponent {
+ // reparaciones() {
 
+  //}
 }

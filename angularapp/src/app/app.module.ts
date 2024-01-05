@@ -11,6 +11,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card'
 import { FormsModule } from '@angular/forms';
+//import { ReparacionesComponent } from './reparaciones/reparaciones.component';
+//import { ContactoComponent } from './contacto/contacto.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { FormsModule } from '@angular/forms';
     AltaEmpleadoComponent,
     VerEmpleadosComponent,
     EmpleadosComponent
+    //ReparacionesComponent
+  //  ContactoComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,

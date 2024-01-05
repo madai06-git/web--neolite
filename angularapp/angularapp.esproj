@@ -9,4 +9,22 @@
     <!-- Folder where production build objects will be placed -->
     <BuildOutputFolder>$(MSBuildProjectDirectory)\dist\angularapp</BuildOutputFolder>
   </PropertyGroup>
+  <ItemGroup>
+    <TypeScriptConfiguration Remove="src\app\contacto\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\app\contacto\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\app\contacto\contacto.component.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\app\contacto\contacto.component.spec.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\app\contacto\contacto.component.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\app\contacto\contacto.component.css" />
+  </ItemGroup>
 </Project>

@@ -4,6 +4,7 @@ import { InicioComponent } from './inicio/inicio.component';
 import { EmpleadosComponent } from './empleados/empleados.component';
 import { AltaEmpleadoComponent } from './empleados/alta-empleado/alta-empleado.component';
 import { VerEmpleadosComponent } from './empleados/ver-empleados/ver-empleados.component';
+import { ReparacionesComponent } from './reparaciones/reparaciones.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
       { path: 'ver-empleados', component: VerEmpleadosComponent },
     ]
   },
+  { path: 'reparaciones', component: ReparacionesComponent },
 ];
 
 @NgModule({
