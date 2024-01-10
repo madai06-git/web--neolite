@@ -11,13 +11,17 @@
       <input type="text" id="nombre" name="nombre" [(ngModel)]="empleado.nombre" required>
     </div>
     <div>
-      <label for="rol">Rol:</label>
+      <label for="rol">Puesto:</label>
       <input type="text" id="rol" name="rol" [(ngModel)]="empleado.rol" required>
     </div>
     <div>
       <label for="contacto">Contacto:</label>
       <input type="text" id="contacto" name="contacto" [(ngModel)]="empleado.contacto" required>
     </div>
+    <div>
+    <label for="comision">Comision:</label>
+    <input type="text" id="comision" name="comision" [(ngModel)]="empleado.comision" required>
+  </div>
     <button type="submit" [disabled]="!altaForm.valid">Dar de Alta</button>
 
   </form>

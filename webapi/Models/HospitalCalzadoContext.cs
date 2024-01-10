@@ -65,8 +65,11 @@ public partial class HospitalCalzadoContext : DbContext
             entity.Property(e => e.CategoriaId)
                 .ValueGeneratedNever()
                 .HasColumnName("CategoriaID");
-            entity.Property(e => e.Descripcion).HasMaxLength(255);
+            entity.Property(e => e.Fecha).HasMaxLength(50);
             entity.Property(e => e.NombreCategoria).HasMaxLength(50);
+            entity.Property(e => e.NumeroNota)
+                .HasMaxLength(10)
+                .IsFixedLength();
         });
 
         modelBuilder.Entity<Cliente>(entity =>
@@ -106,6 +109,7 @@ public partial class HospitalCalzadoContext : DbContext
             entity.HasKey(e => e.EmpleadoId).HasName("PK__Empleado__958BE6F07A93B0EA");
 
             entity.Property(e => e.EmpleadoId).HasColumnName("EmpleadoID");
+            entity.Property(e => e.Comision).HasColumnType("decimal(5, 2)");
             entity.Property(e => e.Contacto).HasMaxLength(20);
             entity.Property(e => e.Nombre).HasMaxLength(255);
             entity.Property(e => e.Rol).HasMaxLength(50);

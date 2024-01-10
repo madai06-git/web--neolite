@@ -9,5 +9,7 @@ public partial class CategoriasServicio
 
     public string? NombreCategoria { get; set; }
 
-    public string? Descripcion { get; set; }
+    public string? NumeroNota { get; set; }
+
+    public string? Fecha { get; set; }
 }

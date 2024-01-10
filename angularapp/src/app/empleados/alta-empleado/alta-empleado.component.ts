@@ -23,7 +23,8 @@ export class AltaEmpleadoComponent {
     "empleadoId": 0,
     "nombre": "",
     "rol": "",
-    "contacto": ""
+    "contacto": "",
+    "comision": ""
   };
 
   constructor(private empleadoService: EmpleadoService) { }

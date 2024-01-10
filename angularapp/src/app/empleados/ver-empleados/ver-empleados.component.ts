@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
@@ -8,7 +9,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class VerEmpleadosComponent {
   empleados!: any[];
-  constructor(private http: HttpClient)
+  constructor(private http: HttpClient, private router: Router)
+
   {
     this.getEmpleados();
   }
@@ -20,6 +22,18 @@ export class VerEmpleadosComponent {
       console.log('emp', ultimos);
     });
 
+  }
+  buscarTrabajosRealizados() {
+
+    console.log('Buscar Trabajos Realizados');
+  }
+
+  registrarTrabajo() {
+    // Lógica para registrar trabajo
+    console.log('Registrar Trabajo');
+
+    // Redirigir a la ventana con tres opciones de botones
+    this.router.navigate(['/opciones-trabajo']);
   }
   /*postEmpleados(nuevoEmpleado: any) {
     const api: string = 'https://localhost:7216/api/Empleadoes';

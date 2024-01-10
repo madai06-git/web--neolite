@@ -13,5 +13,7 @@ public partial class Empleado
 
     public string? Contacto { get; set; }
 
+    public decimal? Comision { get; set; }
+
     public virtual ICollection<HorariosTrabajo> HorariosTrabajos { get; set; } = new List<HorariosTrabajo>();
 }

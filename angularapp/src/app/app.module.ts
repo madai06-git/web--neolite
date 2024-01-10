@@ -13,6 +13,11 @@ import { MatCardModule } from '@angular/material/card'
 import { FormsModule } from '@angular/forms';
 //import { ReparacionesComponent } from './reparaciones/reparaciones.component';
 //import { ContactoComponent } from './contacto/contacto.component';
+//import { OpcionesTrabajoComponent } from './opciones-trabajo/opciones-trabajo.component';
+
+
+//import { OpcionesTrabajoModule } from './opciones-trabajo/opciones-trabajo.module'; // Ajusta la ruta según la ubicación de tu módulo
+
 
 @NgModule({
   declarations: [
@@ -20,7 +25,8 @@ import { FormsModule } from '@angular/forms';
     InicioComponent,
     AltaEmpleadoComponent,
     VerEmpleadosComponent,
-    EmpleadosComponent
+    EmpleadosComponent,
+    //OpcionesTrabajoComponent
     //ReparacionesComponent
   //  ContactoComponent
   ],
@@ -30,7 +36,8 @@ import { FormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     MatListModule,
     MatCardModule,
-    FormsModule
+    FormsModule,
+  //  OpcionesTrabajoModule
   ],
   providers: [],
   bootstrap: [AppComponent]
