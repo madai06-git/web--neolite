@@ -9,13 +9,13 @@ import { VerEmpleadosComponent } from './empleados/ver-empleados/ver-empleados.c
 import { EmpleadosComponent } from './empleados/empleados.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatListModule } from '@angular/material/list';
-import { MatCardModule } from '@angular/material/card'
+import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
+//import { ClienteVentaComponent } from './cliente-venta/cliente-venta.component';
 //import { ReparacionesComponent } from './reparaciones/reparaciones.component';
 //import { ContactoComponent } from './contacto/contacto.component';
 //import { OpcionesTrabajoComponent } from './opciones-trabajo/opciones-trabajo.component';
-
-
+//import { ClienteVentaModule } from './cliente-venta/cliente-venta.module';
 //import { OpcionesTrabajoModule } from './opciones-trabajo/opciones-trabajo.module'; // Ajusta la ruta según la ubicación de tu módulo
 
 
@@ -26,6 +26,7 @@ import { FormsModule } from '@angular/forms';
     AltaEmpleadoComponent,
     VerEmpleadosComponent,
     EmpleadosComponent,
+  //  ClienteVentaComponent,
     //OpcionesTrabajoComponent
     //ReparacionesComponent
   //  ContactoComponent
@@ -37,6 +38,7 @@ import { FormsModule } from '@angular/forms';
     MatListModule,
     MatCardModule,
     FormsModule,
+   // ClienteVentaModule,
   //  OpcionesTrabajoModule
   ],
   providers: [],

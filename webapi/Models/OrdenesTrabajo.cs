@@ -19,7 +19,5 @@ public partial class OrdenesTrabajo
 
     public virtual ICollection<DetalleReparacion> DetalleReparacions { get; set; } = new List<DetalleReparacion>();
 
-    public virtual ICollection<FacturasPago> FacturasPagos { get; set; } = new List<FacturasPago>();
-
     public virtual ICollection<HistorialReparacione> HistorialReparaciones { get; set; } = new List<HistorialReparacione>();
 }

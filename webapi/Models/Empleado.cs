@@ -15,5 +15,7 @@ public partial class Empleado
 
     public decimal? Comision { get; set; }
 
-    public virtual ICollection<HorariosTrabajo> HorariosTrabajos { get; set; } = new List<HorariosTrabajo>();
+    public virtual ICollection<TrabajosRealizado> TrabajosRealizados { get; set; } = new List<TrabajosRealizado>();
+
+    public virtual ICollection<TrabajosRegistrado> TrabajosRegistrados { get; set; } = new List<TrabajosRegistrado>();
 }

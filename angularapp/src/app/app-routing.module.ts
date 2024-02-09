@@ -5,8 +5,10 @@ import { EmpleadosComponent } from './empleados/empleados.component';
 import { AltaEmpleadoComponent } from './empleados/alta-empleado/alta-empleado.component';
 import { VerEmpleadosComponent } from './empleados/ver-empleados/ver-empleados.component';
 import { ReparacionesComponent } from './reparaciones/reparaciones.component';
-import { OpcionesTrabajoComponent } from './opciones-trabajo/opciones-trabajo.component'
-
+import { OpcionesTrabajoComponent } from './opciones-trabajo/opciones-trabajo.component';
+import { ReportesComponent } from './reportes/reportes.component'
+import { ClienteVentaComponent } from './cliente-venta/cliente-venta.component';
+//import { OpcionesTrabajoComponent } from './opciones-trabajo/opciones-trabajo.component'
 const routes: Routes = [
   { path: '', component: InicioComponent },
   {
@@ -19,8 +21,7 @@ const routes: Routes = [
   },
   { path: 'reparaciones', component: ReparacionesComponent },
   { path: 'opciones-trabajo', component: OpcionesTrabajoComponent },
-
-
+  { path: 'cliente-venta', component: ClienteVentaComponent },
 ];
 
 @NgModule({

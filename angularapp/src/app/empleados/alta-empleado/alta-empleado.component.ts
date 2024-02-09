@@ -45,22 +45,5 @@ export class AltaEmpleadoComponent {
 
   }
 
- /* darDeAltaEmpleado() {
-    // Aquí puedes implementar la lógica para dar de alta al empleado.
-    // Por ahora, simplemente imprimo los datos en la consola.
-    console.log('Empleado dado de alta:', this.empleado);
-  }
-  onSubmit() {
-    this.postempleados
-  }
-
-  postempleados() {
-   his.http.post('https://localhost:7216/api/Empleadoes', this.empleado).subscribe(
-      (response) => {
-        console.log('empleado registrado');
-      }
-    )
-
-  }*/
 
 }

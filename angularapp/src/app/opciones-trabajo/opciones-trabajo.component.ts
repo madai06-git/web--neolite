@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component ,Input} from '@angular/core';
+
+import { TrabajosService } from 'src/app/services/trabajos.service';
 
 @Component({
   selector: 'app-opciones-trabajo',
@@ -8,65 +10,26 @@ import { Component } from '@angular/core';
   styleUrl: './opciones-trabajo.component.css'
 })
 export class OpcionesTrabajoComponent {
+  @Input() empleadoId!: number;
+  constructor(private trabajoService: TrabajosService) { }
 
-  mostrarRestauracionCalzado() {
-    // Lógica para mostrar la sección de restauración de calzado
-    console.log('Mostrar Restauración de Calzado');
+  solicitarDatos(tipoRestauracion: string): void {
+    const numeroNota = window.prompt(`Ingrese el número de nota para ${tipoRestauracion}:`);
+    const fecha = window.prompt(`Ingrese la fecha para ${tipoRestauracion} (Formato: DD/MM/AAAA):`);
+
+    if (numeroNota && fecha) {
+      this.trabajoService.registrarTrabajo(this.empleadoId, tipoRestauracion, numeroNota, fecha).subscribe(
+        response => {
+          console.log('Trabajo registrado exitosamente.', response);
+        },
+        error => {
+          console.error('Error al registrar el trabajo:', error);
+        }
+      );
+
+      // Realiza acciones con la información ingresada
+      console.log(`${tipoRestauracion} - Número de Nota: ${numeroNota}, Fecha: ${fecha}`);
+    }
   }
-
-  mostrarRestauracionAccesorios() {
-    // Lógica para mostrar la sección de restauración de accesorios
-    console.log('Mostrar Restauración de Accesorios');
-  }
-
-  mostrarPintadosGenerales() {
-    // Lógica para mostrar la sección de pintados generales
-    console.log('Mostrar Pintados Generales');
-  }
-
-
- /* mostrarCalzado: boolean = false;
-  mostrarAccesorios: boolean = false;
-  mostrarPintados: boolean = false;
-  mostrarFormulario(opcion: string) {
-    this.mostrarCalzado = opcion === 'calzado';
-    this.mostrarAccesorios = opcion === 'accesorios';
-    this.mostrarPintados = opcion === 'pintados';
-  }
-
-
-
- mostrarFormulario = false;
-  numeroNota: string | undefined;
-  fecha: string | undefined
-
-  mostrarCalzado() {
-    this.mostrarFormulario = true;
-  }
-
-  mostrarAccesorios() {
-    this.mostrarFormulario = true;
-  }
-
-  mostrarPintados() {
-    this.mostrarFormulario = true;
-  }
-
-  realizarAccion() {
-    console.log('Número de Nota:', this.numeroNota);
-    console.log('Fecha:', this.fecha);
-
-    this.numeroNota = '';
-    this.fecha = '';
-    this.mostrarFormulario = false;
-  }
-
-  onNumeroNotaChange(value: string): void {
-    this.numeroNota = value;
-  }
-
-  onFechaChange(value: string): void {
-    this.fecha = value;
-  }*/
 
 }

@@ -1,19 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+//import { Trabajo } from './trabajo.model';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
+import { TrabajosService } from 'src/app/services/trabajos.service';
 
 @Component({
   selector: 'app-ver-empleados',
   templateUrl: './ver-empleados.component.html',
   styleUrls: ['./ver-empleados.component.css']
 })
-export class VerEmpleadosComponent {
-  empleados!: any[];
-  constructor(private http: HttpClient, private router: Router)
+export class VerEmpleadosComponent{
+  empleados: any[] = [];
+  trabajosRealizados: any[] = [];
+  //trabajosService !: any;
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private TrabajosService: TrabajosService)
 
   {
+  }
+  ngOnInit(): void {
     this.getEmpleados();
   }
+
 
   getEmpleados() {
     const api: string = 'https://localhost:7216/api/Empleadoes';
@@ -23,29 +34,28 @@ export class VerEmpleadosComponent {
     });
 
   }
-  buscarTrabajosRealizados() {
+  /*buscarTrabajosRealizados(empleadoId: number): void {
 
-    console.log('Buscar Trabajos Realizados');
-  }
+    this.TrabajosService.obtenerTrabajosRealizados(empleadoId).subscribe(
+      trabajos => {
+        this.trabajosRealizados = trabajos;
+      },
+      error => {
+        console.error('Error al obtener los trabajos realizados:', error);
+      }
+    )
 
-  registrarTrabajo() {
-    // Lógica para registrar trabajo
-    console.log('Registrar Trabajo');
-
-    // Redirigir a la ventana con tres opciones de botones
-    this.router.navigate(['/opciones-trabajo']);
-  }
-  /*postEmpleados(nuevoEmpleado: any) {
-    const api: string = 'https://localhost:7216/api/Empleadoes';
-    const headers = new HttpHeaders({ 'Cont-Type': 'application/json' });
-
-    this.http.post<any>(api, nuevoEmpleado, { headers }).subscribe((response: any) => {
-      console.log('Empleado agregado:', response);
-
-      // Después de agregar el empleado, actualiza la lista de empleados
-      this.getEmpleados();
-    });
-
+   // console.log('Buscar Trabajos Realizados');
   }*/
 
+
+  registrarTrabajo(empleadoId: number) {
+    this.router.navigate(['/opciones-trabajo']);
+
+   /* this.trabajosService.registrarTrabajo(empleadoId).subscribe(() => {
+      console.log('Trabajo registrado exitosamente.', empleadoId);
+    }, (error: HttpErrorResponse) => {
+      console.error('Error al registrar el trabajo:', error);
+    });*/
+  }
 }

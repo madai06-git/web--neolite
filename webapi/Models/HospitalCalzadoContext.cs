@@ -17,7 +17,7 @@ public partial class HospitalCalzadoContext : DbContext
 
     public virtual DbSet<Articulo> Articulos { get; set; }
 
-    public virtual DbSet<CategoriasServicio> CategoriasServicios { get; set; }
+    public virtual DbSet<Categoria> Categorias { get; set; }
 
     public virtual DbSet<Cliente> Clientes { get; set; }
 
@@ -25,11 +25,7 @@ public partial class HospitalCalzadoContext : DbContext
 
     public virtual DbSet<Empleado> Empleados { get; set; }
 
-    public virtual DbSet<FacturasPago> FacturasPagos { get; set; }
-
     public virtual DbSet<HistorialReparacione> HistorialReparaciones { get; set; }
-
-    public virtual DbSet<HorariosTrabajo> HorariosTrabajos { get; set; }
 
     public virtual DbSet<InventarioMateriale> InventarioMateriales { get; set; }
 
@@ -38,6 +34,14 @@ public partial class HospitalCalzadoContext : DbContext
     public virtual DbSet<Proveedore> Proveedores { get; set; }
 
     public virtual DbSet<Puesto> Puestos { get; set; }
+
+    public virtual DbSet<TiposRestauracion> TiposRestauracions { get; set; }
+
+    public virtual DbSet<TrabajosRealizado> TrabajosRealizados { get; set; }
+
+    public virtual DbSet<TrabajosRegistrado> TrabajosRegistrados { get; set; }
+
+    public virtual DbSet<VentaCliente> VentaClientes { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
@@ -58,18 +62,12 @@ public partial class HospitalCalzadoContext : DbContext
             entity.Property(e => e.TipoArticulo).HasMaxLength(50);
         });
 
-        modelBuilder.Entity<CategoriasServicio>(entity =>
+        modelBuilder.Entity<Categoria>(entity =>
         {
-            entity.HasKey(e => e.CategoriaId).HasName("PK__Categori__F353C1C5714990E3");
+            entity.HasKey(e => e.CategoriaId).HasName("PK__Categori__F353C1E58AD1EB17");
 
-            entity.Property(e => e.CategoriaId)
-                .ValueGeneratedNever()
-                .HasColumnName("CategoriaID");
-            entity.Property(e => e.Fecha).HasMaxLength(50);
-            entity.Property(e => e.NombreCategoria).HasMaxLength(50);
-            entity.Property(e => e.NumeroNota)
-                .HasMaxLength(10)
-                .IsFixedLength();
+            entity.Property(e => e.CategoriaId).ValueGeneratedNever();
+            entity.Property(e => e.NombreCategoria).HasMaxLength(100);
         });
 
         modelBuilder.Entity<Cliente>(entity =>
@@ -109,26 +107,10 @@ public partial class HospitalCalzadoContext : DbContext
             entity.HasKey(e => e.EmpleadoId).HasName("PK__Empleado__958BE6F07A93B0EA");
 
             entity.Property(e => e.EmpleadoId).HasColumnName("EmpleadoID");
-            entity.Property(e => e.Comision).HasColumnType("decimal(5, 2)");
+            entity.Property(e => e.Comision).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.Contacto).HasMaxLength(20);
             entity.Property(e => e.Nombre).HasMaxLength(255);
             entity.Property(e => e.Rol).HasMaxLength(50);
-        });
-
-        modelBuilder.Entity<FacturasPago>(entity =>
-        {
-            entity.HasKey(e => e.FacturaId).HasName("PK__Facturas__5C024805E123BD1F");
-
-            entity.Property(e => e.FacturaId)
-                .ValueGeneratedNever()
-                .HasColumnName("FacturaID");
-            entity.Property(e => e.FechaFacturacion).HasColumnType("date");
-            entity.Property(e => e.MontoTotal).HasColumnType("money");
-            entity.Property(e => e.OrdenId).HasColumnName("OrdenID");
-
-            entity.HasOne(d => d.Orden).WithMany(p => p.FacturasPagos)
-                .HasForeignKey(d => d.OrdenId)
-                .HasConstraintName("FK__FacturasP__Orden__52593CB8");
         });
 
         modelBuilder.Entity<HistorialReparacione>(entity =>
@@ -149,23 +131,6 @@ public partial class HospitalCalzadoContext : DbContext
             entity.HasOne(d => d.Orden).WithMany(p => p.HistorialReparaciones)
                 .HasForeignKey(d => d.OrdenId)
                 .HasConstraintName("FK__Historial__Orden__4E88ABD4");
-        });
-
-        modelBuilder.Entity<HorariosTrabajo>(entity =>
-        {
-            entity.HasKey(e => e.HorarioId).HasName("PK__Horarios__BB881A9E208D5ABE");
-
-            entity.ToTable("HorariosTrabajo");
-
-            entity.Property(e => e.HorarioId)
-                .ValueGeneratedNever()
-                .HasColumnName("HorarioID");
-            entity.Property(e => e.EmpleadoId).HasColumnName("EmpleadoID");
-            entity.Property(e => e.Fecha).HasColumnType("date");
-
-            entity.HasOne(d => d.Empleado).WithMany(p => p.HorariosTrabajos)
-                .HasForeignKey(d => d.EmpleadoId)
-                .HasConstraintName("FK__HorariosT__Emple__5165187F");
         });
 
         modelBuilder.Entity<InventarioMateriale>(entity =>
@@ -223,6 +188,73 @@ public partial class HospitalCalzadoContext : DbContext
                 .HasColumnName("PuestoID");
             entity.Property(e => e.Comision).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.Nombre).HasMaxLength(255);
+        });
+
+        modelBuilder.Entity<TiposRestauracion>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__TiposRes__3213E83F6B48ECEF");
+
+            entity.ToTable("TiposRestauracion");
+
+            entity.HasIndex(e => e.NombreTipoRestauracion, "UQ__TiposRes__BCCD79A0106F3958").IsUnique();
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.NombreTipoRestauracion)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("nombreTipoRestauracion");
+        });
+
+        modelBuilder.Entity<TrabajosRealizado>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Trabajos__3214EC07604EB7F6");
+
+            entity.Property(e => e.Fecha).HasMaxLength(10);
+            entity.Property(e => e.NumeroNota).HasMaxLength(100);
+            entity.Property(e => e.TipoRestauracion).HasMaxLength(100);
+
+            entity.HasOne(d => d.Empleado).WithMany(p => p.TrabajosRealizados)
+                .HasForeignKey(d => d.EmpleadoId)
+                .HasConstraintName("FK__TrabajosR__Emple__56E8E7AB");
+        });
+
+        modelBuilder.Entity<TrabajosRegistrado>(entity =>
+        {
+            entity.HasKey(e => e.TrabajoId).HasName("PK__Trabajos__FCD3CD3E392F31AC");
+
+            entity.Property(e => e.TrabajoId).ValueGeneratedNever();
+            entity.Property(e => e.Fecha).HasColumnType("date");
+            entity.Property(e => e.NumeroNota)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.TipoRestauracion)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+
+            entity.HasOne(d => d.Empleado).WithMany(p => p.TrabajosRegistrados)
+                .HasForeignKey(d => d.EmpleadoId)
+                .HasConstraintName("FK__TrabajosR__Emple__51300E55");
+        });
+
+        modelBuilder.Entity<VentaCliente>(entity =>
+        {
+            entity.HasKey(e => e.VentaId);
+
+            entity.ToTable("VentaCliente");
+
+            entity.Property(e => e.VentaId)
+                .ValueGeneratedNever()
+                .HasColumnName("VentaID");
+            entity.Property(e => e.Anticipo).HasColumnType("decimal(15, 2)");
+            entity.Property(e => e.Categoria).HasMaxLength(50);
+            entity.Property(e => e.FechaEntrada)
+                .HasMaxLength(10)
+                .IsFixedLength();
+            entity.Property(e => e.FechaSalida)
+                .HasMaxLength(10)
+                .IsFixedLength();
+            entity.Property(e => e.Nombre).HasMaxLength(50);
+            entity.Property(e => e.Precio).HasColumnType("decimal(15, 2)");
         });
 
         OnModelCreatingPartial(modelBuilder);

@@ -14,3 +14,6 @@ export class EmpleadoService {
     return this.http.post(`${this.apiUrl}`, empleado);
   }
 }
+
+
+

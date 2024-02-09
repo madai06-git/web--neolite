@@ -11,55 +11,55 @@ namespace webapi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class FacturasPagoController : ControllerBase
+    public class VentaClientesController : ControllerBase
     {
         private readonly HospitalCalzadoContext _context;
 
-        public FacturasPagoController(HospitalCalzadoContext context)
+        public VentaClientesController(HospitalCalzadoContext context)
         {
             _context = context;
         }
 
-        // GET: api/FacturasPago
+        // GET: api/VentaClientes
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<FacturasPago>>> GetFacturasPagos()
+        public async Task<ActionResult<IEnumerable<VentaCliente>>> GetVentaClientes()
         {
-          if (_context.FacturasPagos == null)
+          if (_context.VentaClientes == null)
           {
               return NotFound();
           }
-            return await _context.FacturasPagos.ToListAsync();
+            return await _context.VentaClientes.ToListAsync();
         }
 
-        // GET: api/FacturasPago/5
+        // GET: api/VentaClientes/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<FacturasPago>> GetFacturasPago(int id)
+        public async Task<ActionResult<VentaCliente>> GetVentaCliente(int id)
         {
-          if (_context.FacturasPagos == null)
+          if (_context.VentaClientes == null)
           {
               return NotFound();
           }
-            var facturasPago = await _context.FacturasPagos.FindAsync(id);
+            var ventaCliente = await _context.VentaClientes.FindAsync(id);
 
-            if (facturasPago == null)
+            if (ventaCliente == null)
             {
                 return NotFound();
             }
 
-            return facturasPago;
+            return ventaCliente;
         }
 
-        // PUT: api/FacturasPago/5
+        // PUT: api/VentaClientes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutFacturasPago(int id, FacturasPago facturasPago)
+        public async Task<IActionResult> PutVentaCliente(int id, VentaCliente ventaCliente)
         {
-            if (id != facturasPago.FacturaId)
+            if (id != ventaCliente.VentaId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(facturasPago).State = EntityState.Modified;
+            _context.Entry(ventaCliente).State = EntityState.Modified;
 
             try
             {
@@ -67,7 +67,7 @@ namespace webapi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!FacturasPagoExists(id))
+                if (!VentaClienteExists(id))
                 {
                     return NotFound();
                 }
@@ -80,23 +80,23 @@ namespace webapi.Controllers
             return NoContent();
         }
 
-        // POST: api/FacturasPago
+        // POST: api/VentaClientes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<FacturasPago>> PostFacturasPago(FacturasPago facturasPago)
+        public async Task<ActionResult<VentaCliente>> PostVentaCliente(VentaCliente ventaCliente)
         {
-          if (_context.FacturasPagos == null)
+          if (_context.VentaClientes == null)
           {
-              return Problem("Entity set 'HospitalCalzadoContext.FacturasPagos'  is null.");
+              return Problem("Entity set 'HospitalCalzadoContext.VentaClientes'  is null.");
           }
-            _context.FacturasPagos.Add(facturasPago);
+            _context.VentaClientes.Add(ventaCliente);
             try
             {
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException)
             {
-                if (FacturasPagoExists(facturasPago.FacturaId))
+                if (VentaClienteExists(ventaCliente.VentaId))
                 {
                     return Conflict();
                 }
@@ -106,32 +106,32 @@ namespace webapi.Controllers
                 }
             }
 
-            return CreatedAtAction("GetFacturasPago", new { id = facturasPago.FacturaId }, facturasPago);
+            return CreatedAtAction("GetVentaCliente", new { id = ventaCliente.VentaId }, ventaCliente);
         }
 
-        // DELETE: api/FacturasPago/5
+        // DELETE: api/VentaClientes/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteFacturasPago(int id)
+        public async Task<IActionResult> DeleteVentaCliente(int id)
         {
-            if (_context.FacturasPagos == null)
+            if (_context.VentaClientes == null)
             {
                 return NotFound();
             }
-            var facturasPago = await _context.FacturasPagos.FindAsync(id);
-            if (facturasPago == null)
+            var ventaCliente = await _context.VentaClientes.FindAsync(id);
+            if (ventaCliente == null)
             {
                 return NotFound();
             }
 
-            _context.FacturasPagos.Remove(facturasPago);
+            _context.VentaClientes.Remove(ventaCliente);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool FacturasPagoExists(int id)
+        private bool VentaClienteExists(int id)
         {
-            return (_context.FacturasPagos?.Any(e => e.FacturaId == id)).GetValueOrDefault();
+            return (_context.VentaClientes?.Any(e => e.VentaId == id)).GetValueOrDefault();
         }
     }
 }
