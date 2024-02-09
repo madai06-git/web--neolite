@@ -41,7 +41,7 @@ export class AltaEmpleadoComponent {
           console.error('Error al dar de alta al empleado:', error);
 
         }
-      );
+     );
 
   }
 

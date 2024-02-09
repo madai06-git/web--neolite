@@ -242,9 +242,7 @@ public partial class HospitalCalzadoContext : DbContext
 
             entity.ToTable("VentaCliente");
 
-            entity.Property(e => e.VentaId)
-                .ValueGeneratedNever()
-                .HasColumnName("VentaID");
+            entity.Property(e => e.VentaId).HasColumnName("VentaID");
             entity.Property(e => e.Anticipo).HasColumnType("decimal(15, 2)");
             entity.Property(e => e.Categoria).HasMaxLength(50);
             entity.Property(e => e.FechaEntrada)

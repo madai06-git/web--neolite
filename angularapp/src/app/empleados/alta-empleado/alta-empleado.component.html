@@ -19,10 +19,11 @@
       <input type="text" id="contacto" name="contacto" [(ngModel)]="empleado.contacto" required>
     </div>
     <div>
-    <label for="comision">Comision:</label>
-    <input type="text" id="comision" name="comision" [(ngModel)]="empleado.comision" required>
-  </div>
-    <button type="submit" [disabled]="!altaForm.valid">Dar de Alta</button>
-
+      <label for="comision">Comision:</label>
+      <input type="text" id="comision" name="comision" [(ngModel)]="empleado.comision" required>
+    </div>
+    <div class="button-container">
+      <button type="submit" [disabled]="!altaForm.valid">Dar de Alta</button>
+      </div>
   </form>
 </div>

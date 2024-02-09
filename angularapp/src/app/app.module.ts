@@ -11,7 +11,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
-//import { ClienteVentaComponent } from './cliente-venta/cliente-venta.component';
+import { ClienteVentaComponent } from './cliente-venta/cliente-venta.component';
+import { ReactiveFormsModule } from '@angular/forms'; // Agrega esta importación
+import { CommonModule } from '@angular/common';
+
 //import { ReparacionesComponent } from './reparaciones/reparaciones.component';
 //import { ContactoComponent } from './contacto/contacto.component';
 //import { OpcionesTrabajoComponent } from './opciones-trabajo/opciones-trabajo.component';
@@ -26,7 +29,7 @@ import { FormsModule } from '@angular/forms';
     AltaEmpleadoComponent,
     VerEmpleadosComponent,
     EmpleadosComponent,
-  //  ClienteVentaComponent,
+    ClienteVentaComponent,
     //OpcionesTrabajoComponent
     //ReparacionesComponent
   //  ContactoComponent
@@ -38,6 +41,8 @@ import { FormsModule } from '@angular/forms';
     MatListModule,
     MatCardModule,
     FormsModule,
+    CommonModule,
+    ReactiveFormsModule
    // ClienteVentaModule,
   //  OpcionesTrabajoModule
   ],
