@@ -17,6 +17,27 @@
     <div class="button-container">
 
       <button type="submit" [disabled]="!altaForm.valid">Registrar Material</button>
+      <button type="button" (click)="consultarMateriales()">Consultar Materiales</button>
     </div>
   </form>
 </div>
+
+<hr> <!-- Línea horizontal como separador -->
+
+<h2>Listado de Materiales en Inventario</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Nombre Material</th>
+      <th>Cantidad</th>
+      <th>Precio Unitario</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let material of materiales">
+      <td>{{ material.nombreMaterial }}</td>
+      <td>{{ material.cantidadStock }}</td>
+      <td>{{ material.precio }}</td>
+    </tr>
+  </tbody>
+</table>
