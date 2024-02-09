@@ -12,8 +12,4 @@ public partial class InventarioMateriale
     public int? CantidadStock { get; set; }
 
     public decimal? Precio { get; set; }
-
-    public int? ProveedorId { get; set; }
-
-    public virtual Proveedore? Proveedor { get; set; }
 }

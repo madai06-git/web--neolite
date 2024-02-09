@@ -27,4 +27,7 @@
   <ItemGroup>
     <None Remove="src\app\contacto\contacto.component.css" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\app\inventario-materiales\inventario-materiales\" />
+  </ItemGroup>
 </Project>

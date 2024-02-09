@@ -31,8 +31,6 @@ public partial class HospitalCalzadoContext : DbContext
 
     public virtual DbSet<OrdenesTrabajo> OrdenesTrabajos { get; set; }
 
-    public virtual DbSet<Proveedore> Proveedores { get; set; }
-
     public virtual DbSet<Puesto> Puestos { get; set; }
 
     public virtual DbSet<TiposRestauracion> TiposRestauracions { get; set; }
@@ -137,16 +135,9 @@ public partial class HospitalCalzadoContext : DbContext
         {
             entity.HasKey(e => e.MaterialId).HasName("PK__Inventar__C50613173181FA43");
 
-            entity.Property(e => e.MaterialId)
-                .ValueGeneratedNever()
-                .HasColumnName("MaterialID");
+            entity.Property(e => e.MaterialId).HasColumnName("MaterialID");
             entity.Property(e => e.NombreMaterial).HasMaxLength(100);
             entity.Property(e => e.Precio).HasColumnType("money");
-            entity.Property(e => e.ProveedorId).HasColumnName("ProveedorID");
-
-            entity.HasOne(d => d.Proveedor).WithMany(p => p.InventarioMateriales)
-                .HasForeignKey(d => d.ProveedorId)
-                .HasConstraintName("FK__Inventari__Prove__5070F446");
         });
 
         modelBuilder.Entity<OrdenesTrabajo>(entity =>
@@ -166,17 +157,6 @@ public partial class HospitalCalzadoContext : DbContext
             entity.HasOne(d => d.Cliente).WithMany(p => p.OrdenesTrabajos)
                 .HasForeignKey(d => d.ClienteId)
                 .HasConstraintName("FK__OrdenesTr__Clien__4CA06362");
-        });
-
-        modelBuilder.Entity<Proveedore>(entity =>
-        {
-            entity.HasKey(e => e.ProveedorId).HasName("PK__Proveedo__61266BB958F1B9CF");
-
-            entity.Property(e => e.ProveedorId)
-                .ValueGeneratedNever()
-                .HasColumnName("ProveedorID");
-            entity.Property(e => e.Contacto).HasMaxLength(20);
-            entity.Property(e => e.Nombre).HasMaxLength(255);
         });
 
         modelBuilder.Entity<Puesto>(entity =>

@@ -14,12 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { ClienteVentaComponent } from './cliente-venta/cliente-venta.component';
 import { ReactiveFormsModule } from '@angular/forms'; // Agrega esta importación
 import { CommonModule } from '@angular/common';
-
-//import { ReparacionesComponent } from './reparaciones/reparaciones.component';
-//import { ContactoComponent } from './contacto/contacto.component';
-//import { OpcionesTrabajoComponent } from './opciones-trabajo/opciones-trabajo.component';
-//import { ClienteVentaModule } from './cliente-venta/cliente-venta.module';
-//import { OpcionesTrabajoModule } from './opciones-trabajo/opciones-trabajo.module'; // Ajusta la ruta según la ubicación de tu módulo
+import { InventarioMaterialesModule } from './inventario-materiales/inventario-materiales.module';
 
 
 @NgModule({
@@ -42,7 +37,8 @@ import { CommonModule } from '@angular/common';
     MatCardModule,
     FormsModule,
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    InventarioMaterialesModule,
    // ClienteVentaModule,
   //  OpcionesTrabajoModule
   ],

@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
 import { ReactiveFormsModule } from '@angular/forms';
-//import { TuServicioDeApi } from '../servicioapi.service';
-//import { ServicioDeApi } from 'src/app/servicioapi.service';
 import { VentasService } from './ventas.service';
 @Component({
   selector: 'app-cliente-venta',

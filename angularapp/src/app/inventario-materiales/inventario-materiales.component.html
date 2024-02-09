@@ -1,0 +1,22 @@
+<h2>Alta de materiales</h2>
+<div>
+  <form (ngSubmit)="registrarmaterial()" #altaForm="ngForm">
+    <div>
+      <label for="nombrematerial">Nombre Maerial:</label>
+      <input type="text" id="nombrematerial" name="nombrematerial" [(ngModel)]="inventario.nombrematerial" required>
+    </div>
+    <div>
+      <label for="cantidadstock">Cantidad:</label>
+      <input type="number" id="cantidadstock" name="cantidadstock" [(ngModel)]="inventario.cantidadstock" required>
+    </div>
+    <div>
+      <label for="precio">Precio Unitario:</label>
+      <input type="number" id="precio" name="precio" [(ngModel)]="inventario.precio" required>
+    </div>
+
+    <div class="button-container">
+
+      <button type="submit" [disabled]="!altaForm.valid">Registrar Material</button>
+    </div>
+  </form>
+</div>

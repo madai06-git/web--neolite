@@ -8,6 +8,8 @@ import { ReparacionesComponent } from './reparaciones/reparaciones.component';
 import { OpcionesTrabajoComponent } from './opciones-trabajo/opciones-trabajo.component';
 import { ReportesComponent } from './reportes/reportes.component'
 import { ClienteVentaComponent } from './cliente-venta/cliente-venta.component';
+import { InventarioMaterialesComponent } from './inventario-materiales/inventario-materiales.component';
+
 //import { OpcionesTrabajoComponent } from './opciones-trabajo/opciones-trabajo.component'
 const routes: Routes = [
   { path: '', component: InicioComponent },
@@ -22,6 +24,7 @@ const routes: Routes = [
   { path: 'reparaciones', component: ReparacionesComponent },
   { path: 'opciones-trabajo', component: OpcionesTrabajoComponent },
   { path: 'cliente-venta', component: ClienteVentaComponent },
+  { path: 'inventario-materiales', component: InventarioMaterialesComponent }
 ];
 
 @NgModule({
